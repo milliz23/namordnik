@@ -1,0 +1,16 @@
+﻿<Application x:Class="WpfApp1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp1"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Background" Value="#b0e5fd"/>
+            </Style.Setters>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Tw Cen MT"></Setter>
+        </Style>
+    </Application.Resources>
+</Application>

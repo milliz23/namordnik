@@ -1,0 +1,84 @@
+﻿<Page x:Class="WpfApp1.page.MaskPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.page"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MaskPage" MaxHeight="450" MaxWidth="800">
+    <Page.Resources>
+        <BitmapImage x:Key="defaulimage" UriSource="/Resources/picture.png"></BitmapImage>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel  HorizontalAlignment="Left" Margin="15,0,0,0" >
+                  <Image Source="/Resources/Намордник.png" Width="100"></Image>
+                <TextBlock Margin="10,10,0,0">НАМОРДНИК</TextBlock>
+            </StackPanel>
+          
+             <StackPanel Orientation="Horizontal">
+                <TextBox TextChanged="TBFilter_TextChanged"  Name="TBFilter"  Width="350" Margin="10"></TextBox>
+                <ComboBox  Name="CBSort" Width="200" Margin="0,10,0,10"></ComboBox>
+                <ComboBox Name="CBFilter2" SelectionChanged="CBFilter2_SelectionChanged"  Width="200" Margin="10"></ComboBox>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button Margin="5" Width="150" Click="BTUp">По возрастанию</Button>
+                <Button Margin="5,5,70,5" Width="150" Click="BTDown">По убыванию</Button>
+            </StackPanel>
+            <StackPanel Margin="5"  Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="Button_Click" Width="200" Margin="0,0,10,0">Добавить запись</Button>
+                <Button Width="200" Click="Button_Click_1">Создать отчет</Button>
+            </StackPanel>
+        </StackPanel>
+           
+           
+                <ListView Name="LVService" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                    <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="#fdbd40" Background="{Binding CountColor}" >
+                                <Grid Width="700" Height="100">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <StackPanel Orientation="Vertical">
+                                        <Image  Source= "{Binding Image,TargetNullValue={StaticResource defaulimage} }" Height="100" Width="100" />
+                                              
+                                        </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel>
+                                             <TextBlock Text="{Binding PartalClass}"></TextBlock>
+                                             <TextBlock  Text="{Binding ArticleNumber, StringFormat={} Артикул: {0}}" ></TextBlock>
+                                    <TextBlock Width="500" TextWrapping="Wrap" Loaded="TBMaterial" Uid="{Binding ID}"></TextBlock>
+                                </StackPanel>
+                                    <StackPanel Margin="0,20,0,0"  >
+                                        <Button Uid="{Binding ID}" Margin="100,0,100,0" Click="Button_Update" >Редактировать</Button>
+                                </StackPanel>
+                                </StackPanel>
+                                        
+                            </StackPanel>
+                                    
+                                     <StackPanel HorizontalAlignment="Right">
+                                <TextBlock  Loaded="TBCost"  Uid="{Binding ID}"></TextBlock>
+                                     </StackPanel>
+                        
+                               </Grid>
+                        
+
+                            </Border>
+                            
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+         
+                </ListView>
+            
+        
+    </Grid>
+</Page>
