@@ -104,8 +104,6 @@ namespace WpfApp1.page
 
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
-
-
             int ind = product.ID;
             Product ProductDelete = BaseClass.Base.Product.FirstOrDefault(y => y.ID == ind);
             BaseClass.Base.Product.Remove(ProductDelete);
